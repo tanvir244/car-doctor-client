@@ -2,11 +2,12 @@ import logo from '../../../assets/logo.svg';
 
 const Footer = () => {
     return (
-        <div>
-            <footer className="footer p-10 bg-base-200 text-base-content">
+        <div className='bg-base-200'>
+            <footer className="footer p-10 text-base-content max-w-7xl mx-auto lg:py-24">
                 <aside>
                     <img src={logo} alt="" />                    
-                    <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                    <p className='text-lg mt-2 font-bold'>Mental Car House Ltd.</p>
+                    <p>Commited to treatment mental car since 1780</p>
                 </aside>
                 <nav>
                     <h6 className="footer-title">Services</h6>
