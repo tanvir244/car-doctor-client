@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../pages/Shared/Navbar/Navbar";
 import Footer from "../pages/Shared/Footer/Footer";
-import About from "../pages/Home/About/About";
 
 const Root = () => {
     return (
@@ -9,7 +8,6 @@ const Root = () => {
             <div className='w-[90%] max-w-7xl mx-auto'>
                 <Navbar></Navbar>
                 <Outlet></Outlet>
-                <About></About>
             </div>
             <Footer></Footer>
         </div>
