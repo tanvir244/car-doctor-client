@@ -1,7 +1,6 @@
-import Swal from "sweetalert2";
 
-const BookingRow = ({ booking, handleDelete }) => {
-    const { _id, date, serviceName, servicePrice, img } = booking;
+const BookingRow = ({ booking, handleDelete, handleBookingConfirm }) => {
+    const { _id, date, serviceName, servicePrice, img, status } = booking;
     console.log(booking);
 
     return (
@@ -17,7 +16,11 @@ const BookingRow = ({ booking, handleDelete }) => {
             <td className="text-base font-semibold">{date}</td>
             <td className="text-lg font-bold">{servicePrice}</td>
             <td>
-                <button className="btn bg-[#FF3811] text-white hover:bg-white hover:text-[#FF3811] px-12">Pending</button>
+                {
+                    status === 'confirm' 
+                    ? <button className="btn bg-green-600 text-white hover:bg-white hover:text-green-600 px-12">Approved</button>
+                    : <button onClick={() => handleBookingConfirm(_id)} className="btn bg-[#FF3811] text-white hover:bg-white hover:text-[#FF3811] px-12">Pending</button> 
+                }
             </td>
             <td>
                 <button onClick={() => handleDelete(_id)} className="btn btn-circle hover:bg-[#FF3811] hover:text-white">
