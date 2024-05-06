@@ -29,14 +29,14 @@ const SignUp = () => {
     }
 
     return (
-        <div className='max-w-6xl mx-auto'>
+        <div className='w-[90%] lg:max-w-6xl mx-auto'>
             <div className="hero min-h-screen bg-base-200 my-12 py-12 rounded-lg">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="w-1/2 mr-12">
                         <img src={img} alt="" />
                     </div>
 
-                    <div className="card shrink-0 w-full max-w-sm">
+                    <div className="card shrink-0 w-full max-w-sm mt-6 lg:mt-0">
                         <h1 className="text-5xl font-bold mb-8 text-center">Sign Up</h1>
                         <form onSubmit={handleSignUp} className="card-body bg-base-100 rounded-xl shadow-2xl">
                             <div className="form-control">

@@ -1,10 +1,25 @@
 import { Link } from "react-router-dom";
 import logo from '../../../assets/logo.svg'
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProviders";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    // logout
+    const handleLogout = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
     const navLinks = <>
-        <li><Link>Home</Link></li>
-        <li><Link>About</Link></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        {user? 
+            <li><Link to="/bookings">My Bookings</Link></li>
+        : <></>
+        }
     </>
 
     return (
@@ -28,8 +43,24 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <button className="btn btn-outline border-[#FF3811] text-[#FF3811] hover:bg-[#FF3811] hover:text-white hover:border-none">Appointment</button>
+                <div className="navbar-end gap-6">
+                    <div className="">
+                        <button className="btn btn-outline border-[#FF3811] text-[#FF3811] hover:bg-[#FF3811] hover:text-white hover:border-none">Appointment</button>
+                    </div>
+                    {user ? <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img alt="Tailwind CSS Navbar component" src={user?.photoURL || "https://i.ibb.co/TmsrwQs/user.png"} />
+                            </div>
+                        </div>
+                        <ul tabIndex={0} className="mt-3 z-[1] p-4 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 font-bold">
+                            {/* <li><a>Profile</a></li>
+                            <li><a>Settings</a></li> */}
+                            <li onClick={handleLogout}><a className="text-lg">Logout</a></li>
+                        </ul>
+                    </div>
+                        : <button>Login</button>
+                    }
                 </div>
             </div>
         </div>
