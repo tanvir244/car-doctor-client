@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Footer from "../Shared/Footer/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const BookService = () => {
     const { user } = useContext(AuthContext);
@@ -42,6 +43,18 @@ const BookService = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                if(data.insertedId){
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your order confirmed",
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                      .then(() => {
+                        form.reset();
+                      })
+                }
             })
 
     }
